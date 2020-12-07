@@ -1,9 +1,15 @@
-const express = require('express');
-const request = require('request');
-const cors    = require('cors');
-const app     = express();
+import express from 'express'
+import request from 'request'
+import cors from 'cors'
+
+const app = express();
 
 app.use(cors());
+
+// .get wants a url then a function
+app.get('/', (req, res) => {
+  res.send('Hi Mom')
+})
 
 app.get('/representatives/:state',
   findRepresentativesByState,
