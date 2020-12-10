@@ -1,13 +1,13 @@
-import React from 'react';
-import './App.css';
-import FindRep from './components/FindRep'
+import React from "react";
+import "./App.css";
+import SomethingGood from "./components/SomethingGood";
 
 const App = () => {
   return (
-    <div className="App">      
-      <FindRep />
+    <div className="App">
+      <SomethingGood />
     </div>
   );
-}
+};
 
 export default App;

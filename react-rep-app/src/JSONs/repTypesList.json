@@ -1,10 +1,10 @@
 [
     {
         "label": "Representative",
-        "value": "representative"
+        "value": "representatives"
     },
     {
         "label": "Senator",
-        "value": "senator"
+        "value": "senators"
     }
 ]
