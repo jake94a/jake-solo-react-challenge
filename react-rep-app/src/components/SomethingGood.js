@@ -3,18 +3,16 @@ import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Button,
-  Collapse,
   Container,
+  FormControl,
   InputLabel,
   List,
-  ListSubheader,
   ListItem,
   ListItemText,
   MenuItem,
   Select,
-  FormControl,
+  Typography,
 } from "@material-ui/core";
-import { ExpandLess, ExpandMore } from "@material-ui/icons";
 
 import RepDetails from "./RepDetails";
 
@@ -24,7 +22,7 @@ import statesList from "../JSONs/statesList.json";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: 360,
+    maxWidth: 600,
     backgroundColor: theme.palette.background.paper,
   },
   nested: {
@@ -39,10 +37,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SomethingGood = () => {
+const Form = () => {
   const classes = useStyles();
   const [reps, setReps] = useState([]);
-  const [repType, setRepType] = useState("");
+  const [repType, setRepType] = useState("Senator");
   const [state, setState] = useState("");
 
   const apiURL = `http://localhost:3000/${repType}/${state}`;
@@ -50,16 +48,24 @@ const SomethingGood = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(apiURL);
-      setReps(response.data.results);
+      if (response.data.success) {
+        setReps(response.data.results);
+      } else {
+        setReps(null);
+      }
     } catch (e) {
       console.error(e);
     }
   };
 
-  // if response is empty do something
-
+  // do you want to find representatives or senators?
+  // maybe provide a default
+  // select the state you want to look at
   return (
-    <Container>
+    <Container key="rep-container" className={classes.root}>
+      <Typography variant="h2" component="h2">
+        Find Your State Representatives!
+      </Typography>
       <FormControl className={classes.formControl}>
         <InputLabel id="repType-select-label">Select Rep Type</InputLabel>
         <Select
@@ -98,11 +104,17 @@ const SomethingGood = () => {
         </Button>
       </FormControl>
 
-      {reps.map((rep) => (
-        <RepDetails rep={rep} />
-      ))}
+      {Boolean(reps) ? (
+        reps.map((rep) => <RepDetails rep={rep} />)
+      ) : (
+        <List key="no-results">
+          <ListItem>
+            <ListItemText primary={`No Results`}></ListItemText>
+          </ListItem>
+        </List>
+      )}
     </Container>
   );
 };
 
-export default SomethingGood;
+export default Form;
