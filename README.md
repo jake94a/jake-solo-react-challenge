@@ -1,6 +1,6 @@
 Using Node v15.1.0
 
-In react-exercise run `npm start`
+In project root run `npm start`
 This runs the backend to listen on port 3000
 
 In react-rep-app run `npm start`
