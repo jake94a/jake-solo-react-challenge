@@ -1,10 +1,20 @@
 Using Node v15.1.0
 
-In project root run `npm start`
-This runs the backend to listen on port 3000
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+`nvm install 15.1.0`
 
-In react-rep-app run `npm start`
-This runs the front end on port 3001
+`git clone <repo>`
+
+# set up and start back end
+cd jake-solo-react-challange
+`npm i`
+`npm start`
+
+# set up and start front end
+cd react-rep-app
+`npm i`
+`npm start`
+Will prompt to run on port 3001
 
 # Front End Challenge
 
