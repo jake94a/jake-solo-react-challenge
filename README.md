@@ -6,15 +6,15 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 `git clone <repo>`
 
 # set up and start back end
-cd jake-solo-react-challange
+- cd jake-solo-react-challange
 - `npm i`
 - `npm start`
 
 # set up and start front end
-cd react-rep-app
-`npm i`
-`npm start`
-Will prompt to run on port 3001
+- cd react-rep-app
+- `npm i`
+- `npm start`
+- Accept prompt to run on port 3001
 
 # Front End Challenge
 
