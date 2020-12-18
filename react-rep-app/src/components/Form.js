@@ -53,7 +53,9 @@ const Form = () => {
   const [repType, setRepType] = useState("");
   const [state, setState] = useState("");
 
-  const apiURL = `http://localhost:3000/${repType}/${state}`;
+  const devUrl = `http://142.93.55.155`;
+  const localUrl = `http://localhost`;
+  const apiURL = `${devUrl}/${repType}/${state}`;
 
   const fetchData = async () => {
     try {
