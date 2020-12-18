@@ -45,97 +45,46 @@ const RepDetails = (rep) => {
    * Link
    */
   return (
-    <List key={`rep-index-${rep.index}`} component="nav" aria-label="rep list">
-      <ListItem key={`rep-name-${rep.rep.name}`} button onClick={handleClick}>
-        <ListItemText
-          key={`rep-name-index-${rep.index}`}
-          primary={rep.rep.name}
-          secondary={rep.rep.party}
-        />
-        {open ? (
-          <ExpandLess key={`expandless-${rep.index}`} />
-        ) : (
-          <ExpandMore key={`expandmore-${rep.index}`} />
-        )}
+    <List component="nav" aria-label="rep list">
+      <ListItem button onClick={handleClick}>
+        <ListItemText primary={rep.rep.name} secondary={rep.rep.party} />
+        {open ? <ExpandLess /> : <ExpandMore />}
       </ListItem>
-      <Divider key={`table-divider-${rep.index}`} />
-      <Collapse
-        key={`rep-details-collapse-${rep.index}`}
-        in={open}
-        unmountOnExit
-      >
-        <TableContainer
-          key={`rep-detail-table-container-${rep.index}`}
-          component={Paper}
-        >
-          <Table
-            key={`rep-detail-table-${rep.index}`}
-            className={classes.table}
-            aria-label="simple table"
-          >
-            <TableBody key={`rep-detail-tablebody-${rep.index}`}>
-              {rep.rep.district && (
-                <TableRow key={rep.rep.district}>
-                  <TableCell
-                    key={`table-cell-0-${rep.index}`}
-                    component="th"
-                    scope="row"
-                  >
-                    <HomeWork key={`district-icon-${rep.index}`} />
+      <Divider />
+      <Collapse in={open} unmountOnExit>
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="simple table">
+            <TableBody>
+              {rep.rep.district ? (
+                <TableRow>
+                  <TableCell component="th" scope="row">
+                    <HomeWork />
                   </TableCell>
-                  <TableCell key={`table-cell-district-${rep.index}`}>
-                    District
-                  </TableCell>
-                  <TableCell key={`table-cell-district-details-${rep.index}`}>
-                    {rep.rep.district}
-                  </TableCell>
+                  <TableCell>District</TableCell>
+                  <TableCell>{rep.rep.district}</TableCell>
                 </TableRow>
-              )}
-              <TableRow key={rep.rep.phone}>
-                <TableCell
-                  key={`table-cell-1-${rep.index}`}
-                  component="th"
-                  scope="row"
-                >
-                  <Phone key={`phone-icon-${rep.index}`} />
+              ) : null}
+              <TableRow>
+                <TableCell component="th" scope="row">
+                  <Phone />
                 </TableCell>
-                <TableCell key={`table-cell-phone-${rep.index}`}>
-                  Phone
-                </TableCell>
-                <TableCell key={`table-cell-phone-details-${rep.index}`}>
-                  {rep.rep.phone}
-                </TableCell>
+                <TableCell>Phone</TableCell>
+                <TableCell>{rep.rep.phone}</TableCell>
               </TableRow>
-              <TableRow key={rep.rep.office}>
-                <TableCell
-                  key={`table-cell-2-${rep.index}`}
-                  component="th"
-                  scope="row"
-                >
-                  <Mail key={`office-icon-${rep.index}`} />
+              <TableRow>
+                <TableCell component="th" scope="row">
+                  <Mail />
                 </TableCell>
-                <TableCell key={`table-cell-office-${rep.index}`}>
-                  Office
-                </TableCell>
-                <TableCell key={`table-cell-office-details-${rep.index}`}>
-                  {rep.rep.office}
-                </TableCell>
+                <TableCell>Office</TableCell>
+                <TableCell>{rep.rep.office}</TableCell>
               </TableRow>
-              <TableRow key={rep.rep.link}>
-                <TableCell
-                  key={`table-cell-3-${rep.index}`}
-                  component="th"
-                  scope="row"
-                >
-                  <Http key={`link-icon-${rep.index}`} />
+              <TableRow>
+                <TableCell component="th" scope="row">
+                  <Http />
                 </TableCell>
-                <TableCell key={`table-cell-link-${rep.index}`}>
-                  Website
-                </TableCell>
-                <TableCell key={`table-cell-link-details-${rep.index}`}>
-                  <Link key={`rep-link-${rep.rep.link}`} href={rep.rep.link}>
-                    {rep.rep.link}
-                  </Link>
+                <TableCell>Website</TableCell>
+                <TableCell>
+                  <Link href={rep.rep.link}>{rep.rep.link}</Link>
                 </TableCell>
               </TableRow>
             </TableBody>
