@@ -1,9 +1,11 @@
 [
     {
+        "id": 1,
         "label": "Representative",
         "value": "representatives"
     },
     {
+        "id": 2,
         "label": "Senator",
         "value": "senators"
     }
