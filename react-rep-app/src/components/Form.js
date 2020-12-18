@@ -53,9 +53,16 @@ const Form = () => {
   const [repType, setRepType] = useState("");
   const [state, setState] = useState("");
 
-  const prodUrl = `http://142.93.55.155:3000`;
-  const devUrl = `http://localhost:3000`;
-  const apiURL = `${devUrl}/${repType}/${state}`;
+  // when deploying, use production URL
+  // for testing, use dev URL
+
+  // production URL
+  const url = `http://142.93.55.155:3000`;
+
+  // dev URL
+  // const url = `http://localhost:3000`;
+
+  const apiURL = `${url}/${repType}/${state}`;
 
   const fetchData = async () => {
     try {
@@ -71,39 +78,30 @@ const Form = () => {
   };
 
   return (
-    <Container key="rep-container" className={classes.root}>
-      <Grid key="grandparent-grid" component={Paper}>
-        <Typography key="title" variant="h2" component="h2">
+    <Container className={classes.root}>
+      <Grid component={Paper}>
+        <Typography variant="h2" component="h2">
           Find Your State Representatives!
         </Typography>
 
-        <Grid key="parent-grid">
-          <TableContainer key="parent-table-container" component={Paper}>
-            <Table
-              key="parent-table"
-              className={classes.table}
-              aria-label="tool table"
-            >
-              <TableBody key="parent-table-body">
-                <TableRow key="repType-tablerow">
-                  <TableCell key="repType-tablecell" component="th" scope="row">
+        <Grid>
+          <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="tool table">
+              <TableBody>
+                <TableRow>
+                  <TableCell component="th" scope="row">
                     Select Type of Representative
                   </TableCell>
 
-                  <TableCell key="repType-selection" align="right">
+                  <TableCell align="right">
                     <FormControl
-                      key="repType-formcontrol"
                       className={classes.formControl}
                       error={!Boolean(repType)}
                     >
-                      <InputLabel
-                        key="repType-select-label"
-                        id="repType-select-label"
-                      >
+                      <InputLabel id="repType-select-label">
                         Select Rep Type
                       </InputLabel>
                       <Select
-                        key="repType-select"
                         labelId="repType-select-label"
                         id="repType-select"
                         value={repType}
@@ -119,23 +117,18 @@ const Form = () => {
                   </TableCell>
                 </TableRow>
 
-                <TableRow key="state">
+                <TableRow>
                   <TableCell>Select State</TableCell>
 
-                  <TableCell key="state-cell" align="right">
+                  <TableCell align="right">
                     <FormControl
-                      key="state-formcontrol"
                       className={classes.formControl}
                       error={!Boolean(state)}
                     >
-                      <InputLabel
-                        key="state-select-label"
-                        id="state-select-label"
-                      >
+                      <InputLabel id="state-select-label">
                         Select State
                       </InputLabel>
                       <Select
-                        key="state-select"
                         labelId="state-select-label"
                         id="state-select"
                         value={state}
@@ -156,9 +149,8 @@ const Form = () => {
         </Grid>
       </Grid>
 
-      <FormControl key="fetch-data-formcontrol" className={classes.formControl}>
+      <FormControl className={classes.formControl}>
         <Button
-          key="fetch-data-button"
           variant="contained"
           className="fetch-button"
           onClick={fetchData}
@@ -169,14 +161,13 @@ const Form = () => {
       </FormControl>
 
       {Boolean(reps) ? (
-        reps.map((rep, index) => <RepDetails rep={rep} index={index} />)
+        reps.map((rep, index) => (
+          <RepDetails key={index} rep={rep} index={index} />
+        ))
       ) : (
-        <List key="no-results">
-          <ListItem key="no-results-item">
-            <ListItemText
-              key="no-results-text"
-              primary={`No Results`}
-            ></ListItemText>
+        <List>
+          <ListItem>
+            <ListItemText primary={`No Results`}></ListItemText>
           </ListItem>
         </List>
       )}
