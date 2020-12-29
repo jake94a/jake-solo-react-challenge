@@ -1,17 +1,17 @@
 Using Node v15.1.0
 
 # Install node via nvm
-- curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+- `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash`
 - `nvm install 15.1.0`
 - `git clone <repo>`
 
 # set up and start back end
-- cd jake-solo-react-challange
+- `cd jake-solo-react-challange`
 - `npm i`
 - `npm start`
 
 # set up and start front end
-- cd react-rep-app
+- `cd react-rep-app`
 - `npm i`
 - `npm start`
 - Accept prompt to run on port 3001
