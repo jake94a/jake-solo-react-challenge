@@ -63,7 +63,7 @@ const Form = () => {
       if (response.data.success) {
         setReps(response.data.results);
       } else {
-        setReps(null);
+        setReps("");
       }
     } catch (e) {
       console.error(e);
