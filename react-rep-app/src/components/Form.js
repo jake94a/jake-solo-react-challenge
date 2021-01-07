@@ -53,14 +53,7 @@ const Form = () => {
   const [repType, setRepType] = useState("");
   const [state, setState] = useState("");
 
-  // when deploying, use production URL
-  // for testing, use dev URL
-
-  // production URL
-  const url = `http://142.93.55.155:3000`;
-
-  // dev URL
-  // const url = `http://localhost:3000`;
+  const url = `http://${window.location.hostname}:3000`;
 
   const apiURL = `${url}/${repType}/${state}`;
 
