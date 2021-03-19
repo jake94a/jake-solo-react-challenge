@@ -1,0 +1,15 @@
+version: "3"
+services:
+  api:
+    image: 299df53de410
+    environment:
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    command: npm start
+
+  client:
+    image: 299df53de410
+    ports:
+      - "3001:3000"
+    command: npm run client:start
