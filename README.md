@@ -1,4 +1,21 @@
-Using Node v15.1.0
+# Setup via Docker *or* NPM
+---
+
+Docker Instructions:
+
+# Install Docker
+
+# set up, build, and run
+- `git clone <repo>`
+- `cd jake-solo-react-challange`
+- `docker build .`
+- `docker-compose up`
+  - or `docker-compose up -d` to detach
+- visit localhost:3001 (frontend) and localhost:3000 (backend)
+
+---
+
+NPM instructions:
 
 # Install node via nvm
 - `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash`
@@ -15,6 +32,8 @@ Using Node v15.1.0
 - `npm i`
 - `npm start`
 - Accept prompt to run on port 3001
+
+---
 
 # Front End Challenge
 
